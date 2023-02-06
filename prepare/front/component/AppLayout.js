@@ -26,13 +26,13 @@ const AppLayout = ({children}) => {
           </Menu>
           <Row gutter={4}>
             <Col xs={24} md={6}>
-              {isLogedin ? <UserProfile setIsLoggedIn={setIslogedin} /> : <Loginform setIsLoggedIn={setIslogedin} /> }
+              {isLogedin ? <UserProfile setIslogedin={setIslogedin} /> : <Loginform setIslogedin={setIslogedin} /> }
             </Col>
             <Col xs={24} md={12}>
               {children}
             </Col>
             <Col xs={24} md={6}>
-              <a href="/" target="_blank" rel="">Biny</a>
+              <a href="/" target="_blank" rel="noreferrer noopener">Biny</a>
             </Col>
           </Row>
         </div>

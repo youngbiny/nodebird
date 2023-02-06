@@ -1,8 +1,13 @@
 import React, {useState,useCallback} from 'react';
 import {Form, Input, Button} from 'antd';
 import Link from 'next/link';
+import styled from 'styled-components';
 
-const Loginform = () => {
+const LogareaForm = styled.div`
+  margin-top:10px;
+`
+
+const Loginform = ({setIslogedin}) => {
   const [id, setId] = useState('');
   const onChangeId = useCallback((e) => {
     setId(e.target.value);
@@ -11,9 +16,10 @@ const Loginform = () => {
   const onChangePassword = useCallback((e) => {
     setPassword(e.target.value);
   }, []);
-  const onSubmitForm = () => {
-    
-  }
+  const onSubmitForm = useCallback(() => {
+    setIslogedin(true);
+    console.log(setIslogedin);
+  },[id, password]);
   return(
     <Form onFinish={onSubmitForm}>
       <div>
@@ -26,10 +32,10 @@ const Loginform = () => {
         <br />
         <Input name="user-password" value={password} type="password" onChange={onChangePassword} required />
       </div>
-      <div>
+      <LogareaForm>
         <Button type="primary" htmlType="submit" loading={false}>로그인</Button>
         <Link href="/signup"><a><Button>회원가입</Button></a></Link>
-      </div>
+      </LogareaForm>
     </Form>
   );
 }
