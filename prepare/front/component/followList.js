@@ -12,12 +12,21 @@ const FallowList = ({header, data}) => {
       size="small"
       header={<div>{header}</div>}
       loadMore={<div style={{textAlign:'center',margin:'10px 0',}}><Button>더보기</Button></div>}
+      dataSource={data}
+      renderItem={(item) => (
+        <List.Item>
+          <Card actions={[<StopOutlined key="stop" />]}>
+            <Card.Meta description={item.nickname} />
+          </Card>
+        </List.Item>
+      )}
      />
   )
 }
 
 FallowList.propsTypes = {
-
+  header : PropTypes.element.isRequired,
+  data : PropTypes.array.isRequired,
 }
 
 export default FallowList;

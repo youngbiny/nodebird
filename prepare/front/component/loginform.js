@@ -2,20 +2,16 @@ import React, {useState,useCallback} from 'react';
 import {Form, Input, Button} from 'antd';
 import Link from 'next/link';
 import styled from 'styled-components';
+import PropsTypes from 'prop-types';
+import useInput from '../hook/useInput'
 
 const LogareaForm = styled.div`
   margin-top:10px;
 `
 
 const Loginform = ({setIslogedin}) => {
-  const [id, setId] = useState('');
-  const onChangeId = useCallback((e) => {
-    setId(e.target.value);
-  }, []); 
-  const [password, setPassword] = useState('');
-  const onChangePassword = useCallback((e) => {
-    setPassword(e.target.value);
-  }, []);
+  const [id, onChangeId] = useInput('');
+  const [password, onChangePassword] = useInput('');
   const onSubmitForm = useCallback(() => {
     setIslogedin(true);
     console.log(setIslogedin);
@@ -38,6 +34,10 @@ const Loginform = ({setIslogedin}) => {
       </LogareaForm>
     </Form>
   );
+}
+
+Loginform.propsTypes = {
+  setIslogedin : PropsTypes.func.isRequired,
 }
 
 export default Loginform;
