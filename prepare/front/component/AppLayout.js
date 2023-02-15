@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropsTypes from 'prop-types';
 import Link from 'next/link';
+import {useSelector} from 'react-redux';
 import { Menu, Input, Row, Col } from 'antd';
 import UserProfile from './userprofile';
 import Loginform from './loginform';
 
 const AppLayout = ({children}) => {
-    const [isLogedin, setIslogedin] = useState(false);
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
     return(
       <>
         <div>
@@ -26,7 +28,7 @@ const AppLayout = ({children}) => {
           </Menu>
           <Row gutter={4}>
             <Col xs={24} md={6}>
-              {isLogedin ? <UserProfile setIslogedin={setIslogedin} /> : <Loginform setIslogedin={setIslogedin} /> }
+              {isLogedin ? <UserProfile /> : <Loginform /> }
             </Col>
             <Col xs={24} md={12}>
               {children}
