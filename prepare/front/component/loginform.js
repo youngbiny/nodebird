@@ -3,7 +3,7 @@ import {Form, Input, Button} from 'antd';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { loginAction } from '../reducers';
+import { loginAction } from '../reducers/user';
 import useInput from '../hook/useInput'
 
 const LogareaForm = styled.div`
@@ -15,9 +15,8 @@ const Loginform = () => {
   const [id, onChangeId] = useInput('');
   const [password, onChangePassword] = useInput('');
   const onSubmitForm = useCallback(() => {
-    setIslogedin(true);
     dispatch(loginAction());
-    console.log(setIslogedin);
+    console.log(loginAction());
   },[id, password]);
   return(
     <Form onFinish={onSubmitForm}>
